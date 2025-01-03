@@ -1,0 +1,344 @@
+import javax.management.MBeanAttributeInfo;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class signUp extends JFrame {
+
+    JLabel signupTitle, nameLabel, emailLabel, genderLabel, passwordLabel;
+    JTextField nameField, emailField, passwordFeild;
+    JPasswordField pwfld;
+    JRadioButton maleRadiobtn, femaleRadiobtn;
+    JCheckBox cbox;
+    JButton btn;
+
+    public signUp() {
+        setSize(450, 600);
+        setTitle("Registration form");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+        setDefaultCloseOperation();
+
+        Container c = getContentPane();
+        c.setLayout(null);
+        c.setBackground(Color.WHITE); //optional
+
+        //signup header
+        signupTitle = new JLabel("Sign Up");
+        signupTitle.setBounds(150, 30, 200, 50);
+        signupTitle.setFont(new Font("inter", Font.BOLD, 40));
+        signupTitle.setForeground(Color.BLUE);
+
+        c.add(signupTitle);
+
+        //name
+        nameLabel = new JLabel("Name");
+        nameLabel.setBounds(30, 150, 100, 30);
+        nameLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(nameLabel);
+
+        nameField = new JTextField();
+        nameField.setBounds(150, 150, 250, 30);
+
+        c.add(nameField);
+
+        //email
+        emailLabel = new JLabel("Email");
+        emailLabel.setBounds(30, 200, 100, 30);
+        emailLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(emailLabel);
+
+        emailField = new JTextField();
+        emailField.setBounds(150, 200, 250, 30);
+
+        c.add(emailField);
+
+        //gender
+        genderLabel = new JLabel("Gender");
+        genderLabel.setBounds(30, 250, 100, 30);
+        genderLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(genderLabel);
+
+        maleRadiobtn = new JRadioButton("Male");
+        maleRadiobtn.setBounds(150, 250, 100, 30);
+        maleRadiobtn.setFont(new Font("inter", Font.BOLD, 20));
+        maleRadiobtn.setBackground(Color.WHITE);
+        maleRadiobtn.setSelected(true);
+        c.add(maleRadiobtn);
+
+        femaleRadiobtn = new JRadioButton("Female");
+        femaleRadiobtn.setBounds(300, 250, 100, 30);
+        femaleRadiobtn.setFont(new Font("inter", Font.BOLD, 20));
+        femaleRadiobtn.setBackground(Color.WHITE);
+        c.add(femaleRadiobtn);
+
+        ButtonGroup gndgrp = new ButtonGroup();
+        gndgrp.add(maleRadiobtn);
+        gndgrp.add(femaleRadiobtn);
+
+        //password
+        passwordLabel = new JLabel("Password");
+        passwordLabel.setBounds(30, 300, 150, 30);
+        passwordLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(passwordLabel);
+
+        pwfld = new JPasswordField();
+        pwfld.setBounds(150, 300, 250, 30);
+        c.add(pwfld);
+
+        //checkbox
+        cbox = new JCheckBox("I am not a robot");
+        cbox.setFont(new Font("inter", Font.PLAIN, 20));
+        cbox.setBounds(50,350, 250, 30);
+        cbox.setBackground(Color.WHITE);
+        c.add(cbox);
+
+        btn = new JButton("SIGN UP");
+        btn.setBounds(50, 450, 350, 35);
+        btn.setFont(new Font("inter", Font.BOLD, 20));
+        btn.setForeground(Color.white);
+        btn.setBackground(Color.blue);
+        c.add(btn);
+
+    btn.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String name = nameField.getText().trim();
+            String email = emailField.getText().trim();
+            String pw = new String(pwfld.getPassword()).trim();
+
+            String gender = null;
+            if(maleRadiobtn.isSelected()){
+                gender = "male";
+
+            } else if (femaleRadiobtn.isSelected()){
+                gender = "female";
+            }
+
+//            String msg = "you selected " + gender +"\nname   "+ name + "\nemail   " + email + "\npw   " + pw;
+//            JOptionPane.showMessageDialog(null, msg);
+
+            if (!cbox.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Please confirm you are not a robot!");
+                return;
+            }
+
+            if (name.isEmpty() || email.isEmpty() || pw.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "All fields are required!");
+                return;
+            }
+
+//            boolean isRegistered = new jdbc().registeruser(name, email, gender, pw);
+//            if (isRegistered) {
+//                JOptionPane.showMessageDialog(null, "Registration successful!");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Registration failed. Please try again.");
+//            }
+
+        }
+    });
+
+    }
+
+    public static void main(String[] args) {
+        signUp form = new signUp();
+        form.setVisible(true);
+    }
+}
+
+
+
+
+import javax.management.MBeanAttributeInfo;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class signUp extends JFrame {
+
+    JLabel signupTitle, nameLabel, emailLabel, genderLabel, passwordLabel;
+    JTextField nameField, emailField, passwordFeild;
+    JPasswordField pwfld;
+    JRadioButton maleRadiobtn, femaleRadiobtn;
+    JCheckBox cbox;
+    JButton btn;
+
+    public signUp() {
+        setSize(450, 600);
+        setTitle("Registration form");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+        setDefaultCloseOperation();
+
+        Container c = getContentPane();
+        c.setLayout(null);
+        c.setBackground(Color.WHITE); //optional
+
+        //signup header
+        signupTitle = new JLabel("Sign Up");
+        signupTitle.setBounds(150, 30, 200, 50);
+        signupTitle.setFont(new Font("inter", Font.BOLD, 40));
+        signupTitle.setForeground(Color.BLUE);
+
+        c.add(signupTitle);
+
+        //name
+        nameLabel = new JLabel("Name");
+        nameLabel.setBounds(30, 150, 100, 30);
+        nameLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(nameLabel);
+
+        nameField = new JTextField();
+        nameField.setBounds(150, 150, 250, 30);
+
+        c.add(nameField);
+
+        //email
+        emailLabel = new JLabel("Email");
+        emailLabel.setBounds(30, 200, 100, 30);
+        emailLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(emailLabel);
+
+        emailField = new JTextField();
+        emailField.setBounds(150, 200, 250, 30);
+
+        c.add(emailField);
+
+        //gender
+        genderLabel = new JLabel("Gender");
+        genderLabel.setBounds(30, 250, 100, 30);
+        genderLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(genderLabel);
+
+        maleRadiobtn = new JRadioButton("Male");
+        maleRadiobtn.setBounds(150, 250, 100, 30);
+        maleRadiobtn.setFont(new Font("inter", Font.BOLD, 20));
+        maleRadiobtn.setBackground(Color.WHITE);
+        maleRadiobtn.setSelected(true);
+        c.add(maleRadiobtn);
+
+        femaleRadiobtn = new JRadioButton("Female");
+        femaleRadiobtn.setBounds(300, 250, 100, 30);
+        femaleRadiobtn.setFont(new Font("inter", Font.BOLD, 20));
+        femaleRadiobtn.setBackground(Color.WHITE);
+        c.add(femaleRadiobtn);
+
+        ButtonGroup gndgrp = new ButtonGroup();
+        gndgrp.add(maleRadiobtn);
+        gndgrp.add(femaleRadiobtn);
+
+        //password
+        passwordLabel = new JLabel("Password");
+        passwordLabel.setBounds(30, 300, 150, 30);
+        passwordLabel.setFont(new Font("inter", Font.BOLD, 20 ));
+
+        c.add(passwordLabel);
+
+        pwfld = new JPasswordField();
+        pwfld.setBounds(150, 300, 250, 30);
+        c.add(pwfld);
+
+        //checkbox
+        cbox = new JCheckBox("I am not a robot");
+        cbox.setFont(new Font("inter", Font.PLAIN, 20));
+        cbox.setBounds(50,350, 250, 30);
+        cbox.setBackground(Color.WHITE);
+        c.add(cbox);
+
+        btn = new JButton("SIGN UP");
+        btn.setBounds(50, 450, 350, 35);
+        btn.setFont(new Font("inter", Font.BOLD, 20));
+        btn.setForeground(Color.white);
+        btn.setBackground(Color.blue);
+        c.add(btn);
+
+    btn.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String name = nameField.getText().trim();
+            String email = emailField.getText().trim();
+            String pw = new String(pwfld.getPassword()).trim();
+
+            String gender = null;
+            if(maleRadiobtn.isSelected()){
+                gender = "male";
+
+            } else if (femaleRadiobtn.isSelected()){
+                gender = "female";
+            }
+
+//            String msg = "you selected " + gender +"\nname   "+ name + "\nemail   " + email + "\npw   " + pw;
+//            JOptionPane.showMessageDialog(null, msg);
+
+            if (!cbox.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Please confirm you are not a robot!");
+                return;
+            }
+
+            if (name.isEmpty() || email.isEmpty() || pw.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "All fields are required!");
+                return;
+            }
+
+//            boolean isRegistered = new jdbc().registeruser(name, email, gender, pw);
+//            if (isRegistered) {
+//                JOptionPane.showMessageDialog(null, "Registration successful!");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Registration failed. Please try again.");
+//            }
+
+        }
+    });
+
+    }
+
+    public static void main(String[] args) {
+        signUp form = new signUp();
+        form.setVisible(true);
+    }
+}
+
+
+
+import java.sql.*;
+
+public class jdbc {
+    private static final String URL = "jdbc:mysql://localhost:3306/registration"; // database name
+    private static final String USER = "root"; // XAMPP username
+    private static final String PASSWORD = ""; // XAMPP password
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
+    public boolean registeruser(String name, String email, String gender, String password) {
+
+        String query = "INSERT INTO userdata (name, email, gender, password) VALUES (?, ?, ?, ?)";
+        try (Connection conn = jdbc.getConnection();
+
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+                pstmt.setString(1, name);
+                pstmt.setString(2, email);
+                pstmt.setString(3, gender);
+                pstmt.setString(4, password);
+                pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace(); // Print any SQL exceptions
+        }
+        return false; // Return false if registration fails
+    }
+}
